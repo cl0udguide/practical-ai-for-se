@@ -1,0 +1,27 @@
+# ============================================================================
+# Practical AI for Systems Engineers - Python Dependencies
+# ============================================================================
+# Requires: Python 3.8+
+# System dependency: ffmpeg (install separately - see README.md)
+# ============================================================================
+
+# -------------------- Document Conversion --------------------
+docling                      # Core document conversion library
+openpyxl                     # Excel file manipulation and formula evaluation
+playwright                   # Web scraping with JavaScript rendering support
+
+# -------------------- Media Processing --------------------
+yt-dlp                       # YouTube and video download/extraction
+youtube-transcript-api       # Fast YouTube transcript fetching (optional)
+openai-whisper               # Whisper ASR for audio/video transcription
+
+# -------------------- AI Agents & LLM --------------------
+agno                         # Agent framework for AI tool calling
+ollama                       # Local LLM interactions
+openai                       # OpenAI API client
+yfinance                     # Yahoo Finance integration (used by agents)
+
+# -------------------- Vector Database (RAG) --------------------
+sqlalchemy                   # SQL toolkit and ORM
+psycopg[binary]              # PostgreSQL adapter
+pgvector                     # PostgreSQL vector similarity search
