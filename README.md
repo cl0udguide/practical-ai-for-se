@@ -189,16 +189,54 @@ Open VS Code's integrated terminal (`Ctrl+``) or PowerShell in the project direc
 
 With virtual environment activated:
 
+1. **First, upgrade pip, setuptools, and wheel:**
+   ```powershell
+   python -m pip install --upgrade pip setuptools wheel
+   ```
+
+2. **Install all requirements:**
+   ```powershell
+   pip install -r requirements.txt
+   ```
+
+   This will take a few minutes. Wait for all packages to install.
+
+3. **Verify installation:**
+   ```powershell
+   pip list
+   ```
+
+**⚠️ If you see compilation errors mentioning scikit-image, meson, or missing C compiler:**
+
+This means pip is trying to build packages from source code. Fix it with one of these solutions:
+
+**Solution A - Force Binary Wheels (Try First):**
 ```powershell
+# Install scikit-image separately with binary wheel
+pip install --only-binary :all: scikit-image
+
+# Then continue with requirements
 pip install -r requirements.txt
 ```
 
-This will take a few minutes. Wait for all packages to install.
+**Solution B - Install C++ Build Tools:**
 
-**Verify installation:**
-```powershell
-pip list
-```
+If Solution A doesn't work:
+
+1. Download **Build Tools for Visual Studio 2022**:
+   - Visit: https://visualstudio.microsoft.com/downloads/
+   - Scroll to "Tools for Visual Studio"
+   - Download "Build Tools for Visual Studio 2022"
+
+2. Run the installer:
+   - Select "Desktop development with C++"
+   - Install (requires ~6GB disk space)
+   - Restart your computer
+
+3. Try installing requirements again:
+   ```powershell
+   pip install -r requirements.txt
+   ```
 
 ### Step 8: Test with Your First Transcription
 
@@ -407,16 +445,22 @@ Open VS Code's integrated terminal (`` Ctrl+` ``) or continue in Terminal:
 
 With virtual environment activated:
 
-```bash
-pip install -r requirements.txt
-```
+1. **First, upgrade pip, setuptools, and wheel:**
+   ```bash
+   python -m pip install --upgrade pip setuptools wheel
+   ```
 
-This will take a few minutes. Wait for all packages to install.
+2. **Install all requirements:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-**Verify installation:**
-```bash
-pip list
-```
+   This will take a few minutes. Wait for all packages to install.
+
+3. **Verify installation:**
+   ```bash
+   pip list
+   ```
 
 ### Step 9: Test with Your First Transcription
 
@@ -657,16 +701,22 @@ Open VS Code's integrated terminal (`` Ctrl+` ``) or continue in terminal:
 
 With virtual environment activated:
 
-```bash
-pip install -r requirements.txt
-```
+1. **First, upgrade pip, setuptools, and wheel:**
+   ```bash
+   python -m pip install --upgrade pip setuptools wheel
+   ```
 
-This will take a few minutes. Wait for all packages to install.
+2. **Install all requirements:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-**Verify installation:**
-```bash
-pip list
-```
+   This will take a few minutes. Wait for all packages to install.
+
+3. **Verify installation:**
+   ```bash
+   pip list
+   ```
 
 ### Step 9: Test with Your First Transcription
 
@@ -1124,6 +1174,61 @@ Reinstall all dependencies:
 ```bash
 pip install -r requirements.txt --force-reinstall
 ```
+
+### Compilation Errors (scikit-image, meson, missing compiler)
+
+**Error messages like:**
+- "Unknown compiler(s): [['icl'], ['cl'], ['cc'], ['gcc']]"
+- "ERROR: Failed to build scikit-image"
+- "error: Microsoft Visual C++ 14.0 or greater is required"
+- "meson.build:1:0: ERROR: Unknown compiler(s)"
+
+**This happens because:**
+- Some packages need to be compiled from C/C++ source code
+- Your system lacks the required C/C++ compiler
+
+**Solutions (in order of preference):**
+
+1. **Upgrade pip first (most common fix):**
+   ```bash
+   python -m pip install --upgrade pip setuptools wheel
+   pip install -r requirements.txt
+   ```
+
+2. **Force binary wheels:**
+   ```bash
+   pip install --only-binary :all: scikit-image
+   pip install -r requirements.txt
+   ```
+
+3. **Install build tools for your platform:**
+
+   **Windows:**
+   - Download from: https://visualstudio.microsoft.com/downloads/
+   - Install "Build Tools for Visual Studio 2022"
+   - Select "Desktop development with C++"
+   - Restart computer and retry
+
+   **macOS:**
+   ```bash
+   xcode-select --install
+   ```
+
+   **Linux (Ubuntu/Debian):**
+   ```bash
+   sudo apt update
+   sudo apt install build-essential python3-dev
+   ```
+
+   **Linux (Fedora):**
+   ```bash
+   sudo dnf groupinstall "Development Tools"
+   sudo dnf install python3-devel
+   ```
+
+**Prevention:**
+- Always use Python 3.11 or 3.12 for best binary wheel support
+- Keep pip updated: `python -m pip install --upgrade pip`
 
 ### YouTube Transcript Not Available
 
