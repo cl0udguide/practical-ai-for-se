@@ -11,6 +11,19 @@ This repository provides production-ready CLI tools and examples for:
 - **RAG Systems** - Vector databases with pgvector and hybrid search
 - **Web Scraping** - JavaScript-rendered pages with bot protection bypass
 
+## ⚠️ Python Version Compatibility
+
+**Important:** Python 3.14.x is not currently compatible with this project due to dependencies that have not yet been updated to support Python 3.14.
+
+**Recommended Python versions:**
+- ✅ Python 3.11.x (Recommended)
+- ✅ Python 3.12.x (Recommended)
+- ✅ Python 3.13.x (Should work)
+- ⚠️ Python 3.8 - 3.10 (Supported but may require additional build tools)
+- ❌ Python 3.14.x (Not compatible)
+
+If you have Python 3.14 installed, please install Python 3.11, 3.12, or 3.13 alongside it and use that version for this project.
+
 ## ⚡ Quick Start Guide
 
 Complete setup guide from scratch to your first transcription in under 10 minutes!
@@ -772,7 +785,9 @@ You've successfully completed the Linux setup!
 
 ## 📋 Prerequisites
 
-- **Python 3.8+** (verify: `python --version`)
+- **Python 3.11, 3.12, or 3.13** (recommended - verify: `python --version`)
+  - ⚠️ Python 3.14.x is not compatible - see [Python Version Compatibility](#️-python-version-compatibility) above
+  - Python 3.8-3.10 also supported but may require additional build tools
 - **ffmpeg** (required for audio/video processing)
 - **Git** (optional - for cloning the repository, or download as ZIP)
 
