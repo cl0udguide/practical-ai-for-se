@@ -1060,58 +1060,6 @@ python whisper_local.py audio.mp3 --output transcript.txt
 python whisper_local.py --help
 ```
 
-### AI Agents (Module 08)
-
-#### Basic Financial Agent
-
-```bash
-cd module-08
-
-# Run basic agent (requires Ollama running locally)
-python 01_basic_agent.py
-```
-
-Queries stock prices using YFinance integration.
-
-#### Hacker News Security Agent
-
-```bash
-cd module-08
-
-# Run security research agent
-python 02_hacker_news_agent.py
-```
-
-Aggregates and summarizes security vulnerabilities from Hacker News.
-
-#### YouTube Content Analyzer
-
-```bash
-cd module-08
-
-# Configure OpenAI API key first
-# Create .env file with: OPENAI_API_KEY=your_key_here
-
-# Run YouTube analyzer
-python 03_youtube_agent.py
-```
-
-Analyzes YouTube videos with timestamps and content breakdown.
-
-#### RAG System with pgvector
-
-```bash
-cd module-08
-
-# Setup PostgreSQL with pgvector first (see module-08/docker/docker-compose.yml)
-# Update database connection string in 04_simple_rag.py
-
-# Run RAG example
-python 04_simple_rag.py
-```
-
-Demonstrates hybrid search (semantic + full-text) with markdown-aware chunking.
-
 ## 🔧 Common Tasks
 
 ### Activating Virtual Environment
