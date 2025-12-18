@@ -25,7 +25,7 @@ services:
       - N8N_PORT=5678
       - OLLAMA_HOST=http://host.docker.internal:11434
       - GENERIC_TIMEZONE=Europe/Warsaw
-      - N8N_FILESYSTEM_ALLOW_LIST=/files
+      - N8N_RESTRICT_FILE_ACCESS_TO=/files
       # Enable community packages for MCP support
       - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
     volumes:
