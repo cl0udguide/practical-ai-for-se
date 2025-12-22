@@ -1,0 +1,12 @@
+[project]
+name = "docker-mcp-simple"
+version = "0.1.0"
+description = "A simple Docker MCP server using Docker CLI"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[tool.uv]
+dev-dependencies = []
+
