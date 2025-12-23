@@ -25,3 +25,5 @@ yfinance                     # Yahoo Finance integration (used by agents)
 sqlalchemy                   # SQL toolkit and ORM
 psycopg[binary]              # PostgreSQL adapter
 pgvector                     # PostgreSQL vector similarity search
+unstructured                 # Document parsing and chunking
+markdown                     # Markdown parsing for chunking strategy
