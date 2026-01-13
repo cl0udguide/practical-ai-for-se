@@ -1,0 +1,52 @@
+name: n8n-simple-private-rag
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: postgres-pgvector
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_secure_password
+      POSTGRES_DB: n8n_rag
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - n8n-network
+    restart: unless-stopped
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - GENERIC_TIMEZONE=Europe/Warsaw
+      # File system access configuration
+      - N8N_RESTRICT_FILE_ACCESS_TO=/monitoring  # Restrict file access to /monitoring only
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false  # Allow environment variable access
+      - N8N_BLOCK_FILE_SYSTEM_ACCESS=false  # Enable fs module in Code nodes
+      - N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES=false  # Allow access to n8n files
+      - NODE_FUNCTION_ALLOW_BUILTIN=fs  # Explicitly allow fs module
+      - NODE_FUNCTION_ALLOW_EXTERNAL=*  # Allow external modules
+      # Enable community packages for MCP support
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+    volumes:
+      - n8n_data:/home/node/.n8n       # Persistent volume for n8n data
+      - ./monitoring-data:/monitoring:rw  # Mount with read-write permissions
+    networks:
+      - n8n-network
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+networks:
+  n8n-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  n8n_data:
